@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-user-edit"></i> {{ worker.id }} - {{ worker.firstName }} {{ worker.lastName }}</h5>
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.firstName) }}</label>
+                <div class="col-sm-7">
+                    {{ form_widget(form.firstName, {"attr": {"placeholder": "Imię"}}) }}
+                    <small>Podaj imię dodawanego pracownika.</small>
+                </div>
+            </div>
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.lastName) }}</label>
+                <div class="col-sm-7">
+                    {{ form_widget(form.lastName, {"attr": {"placeholder": "Nazwisko"}}) }}
+                    <small>Podaj nazwisko dodawanego pracownika.</small>
+                </div>
+            </div>
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.jobTitle) }}</label>
+                <div class="col-sm-7">
+                    {{ form_widget(form.jobTitle) }}
+                    <small>Podaj stanowisko dodawanego pracownika.</small>
+                </div>
+            </div>
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.hiredAt) }}</label>
+                <div class="col-sm-3">
+                    {{ form_widget(form.hiredAt, {"attr": {"placeholder": "Data Zatrudnienia"}}) }}
+                    <small>Podaj datę zatrudnienia</small>
+                </div>
+                <label for="choiceType" class="col-sm-1 col-form-label">{{ form_label(form.hired) }}</label>
+                <div class="col-sm-3">
+                    {{ form_widget(form.hired) }}
+                    <small>Czy pracownik rozpoczął już pracę ?</small>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-group row offset-5">
+                <div class="col-sm-2">
+                    <a href="{{ url('worker_details', {"id":worker.id}) }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-circle-left"></i> Powrót
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    {{ form_widget(form.submit, {"attr": {"class": "btn-outline-primary"}}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

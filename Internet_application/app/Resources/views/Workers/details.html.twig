@@ -1,0 +1,95 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-user-tie"></i> ({{ worker.id }}) - {{ worker.firstName }} {{ worker.lastName }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group field-integer row offset-2">
+                <label class="col-sm-2 control-label">
+                    Imię i Nazwisko
+                </label>
+                <div class="col-sm-6">
+                    <div class="form-control">
+                        {{ worker.firstName }} {{ worker.lastName }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group field-integer row offset-2">
+                <label class="col-sm-2 control-label">
+                    Zatrudniony
+                </label>
+                <div class="col-sm-6">
+                    <div class="form-control">
+                        {{ worker.hiredAt|date('Y-m-d') }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group field-integer row offset-2">
+                <label class="col-sm-2 control-label">
+                    Stanowisko
+                </label>
+                <div class="col-sm-6">
+                    <div class="form-control">
+                        {{ worker.jobTitle }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group field-integer row offset-2">
+                <label class="col-sm-2 control-label">
+                    Czy jest zatrudniony ?
+                </label>
+                <div class="col-sm-6">
+                    <div class="form-control">
+                        {% if worker.hired is same as(1) %}
+                            <p>Tak</p>
+                        {% else %}
+                            <p>Nie</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group field-integer row offset-2">
+                <label class="col-sm-2 control-label">
+                    Numery Kart
+                </label>
+                <div class="col-sm-6">
+                    <div class="form-control">
+                        <p>
+                            {% for card in worker.cards %}
+                                <a href="{{ url('card_details', {'id':card.id}) }}">{{ card.cardId }}</a>,
+                            {% endfor %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offset-4">
+                <a href="{{ url('worker_edit', {'id':worker.id}) }}">
+                    <button type="button" class="btn btn-outline-info">
+                        <i class="fas fa-edit"></i> Edycja
+                    </button>
+                </a>
+                <a href="{{ url('worker_remove', {"id":worker.id}) }}">
+                    <button type="button" class="btn btn-outline-danger">
+                        <i class="fas fa-user-minus"></i> Usuń
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ url('worker_index') }}">
+                <button type="button" class="btn btn-outline-dark">
+                    <i class="fas fa-arrow-circle-left"></i> Powrót
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

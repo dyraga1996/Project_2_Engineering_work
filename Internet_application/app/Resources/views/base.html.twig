@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}System kontroli dostępu{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/vendor/bootstrap/dist/css/bootstrap.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/vendor/bootstrap/dist/css/custom.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/vendor/fontawesome/css/all.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/vendor/fontawesome/css/brands.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('/vendor/sbadmin/css/sb-admin.css') }}"/>
+
+        <script type="text/javascript" src="{{ asset('vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/sbadmin/js/sb-admin.min.js') }}"></script>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div>
+    {% if is_granted("ROLE_USER") %}
+        {% include 'Menus/menuLogged.html.twig' %}
+    {% else %}
+
+    {% endif %}
+</div>
+
+<hr/>
+
+<div class="container">
+    {% for message in app.flashes("success")  %}
+        <div class="alert alert-success" role="alert">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes("error")  %}
+        <div class="alert alert-danger" role="alert">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes("info")  %}
+        <div class="alert alert-info" role="alert">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+<div class="container">
+    {% block body %}{% endblock %}
+</div>
+
+
+<!-- Footer -->
+<div class="wrapper fixed-bottom">
+    <div class="card">
+        <div class="card-body center">
+            <p class="offset-4">&#9400; Website developed by Michał Dyraga - 2019</p>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>
+

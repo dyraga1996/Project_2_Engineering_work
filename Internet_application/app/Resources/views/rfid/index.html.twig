@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="card bg-light mb-3">
+    <div class="card-header"><i class="fas fa-universal-access"></i> Witaj !</div>
+    <div class="card-body">
+        <h5 class="card-title">RFID-Managament</h5>
+        <p class="card-text">Strona służy zarządzaniu systemem dostępu do poszczególnych obiektów w budynku.</p>
+        <p>Zalogowałeś się na konto z pełnymi uprawnieniami administratorskimi. Masz dostęp do wszystkich paneli.</p>
+    </div>
+    </div>
+    <br/>
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-white bg-success">
+                    <h5 class="card-title"><i class="fas fa-user-tie"></i> Pracownicy</h5>
+                    <p class="card-text">Przeglądaj zatrudnionych pracowników, zarządzaj nimi.</p>
+                    <div align="center">
+                        <a href="{{ url('worker_index') }}" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-circle-right"></i> Przejdź
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-white bg-info">
+                    <h5 class="card-title"><i class="fas fa-id-card-alt"></i> Karty</h5>
+                    <p class="card-text">Przeglądaj oraz zarządzaj aktywnymi kartami w systemie</p>
+                    <div align="center">
+                        <a href="{{ url('cards_index') }}" class="btn btn-outline-light">
+                            <i class="fas fa-arrow-circle-right"></i> Przejdź
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body text-white bg-dark">
+                    <h5 class="card-title"><i class="fas fa-align-justify"></i> Logi</h5>
+                    <p class="card-text">Przeglądaj ostatnie zdarzenia w systemie</p><br/>
+                    <a href="{{ url('logs_cards_index') }}" class="btn btn-outline-light">
+                        <i class="fas fa-arrow-circle-right"></i> Logi kart
+                    </a>
+                    <a href="{{ url('logs_admin_index') }}" class="btn btn-outline-light">
+                        <i class="fas fa-arrow-circle-right"></i> Logi administracyjne
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

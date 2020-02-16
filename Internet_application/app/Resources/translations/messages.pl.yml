@@ -1,0 +1,40 @@
+#ADMIN PANEL
+User: Użytkownicy
+ACP_LAST_LOGGED: Ostatnio Zalogowany
+ACP_USERS: Użytkownicy
+ACP_USERNAME: Nazwa Użytkownika
+ACP_LOWERCASE_USERNAME: Nazwa Użytkownika(z małej)
+ACP_EMAIL: Adres E-Mail
+ACP_LOWERCASE_EMAIL: Adres E-Mail(z małej)
+ACP_ACTIVE: Aktywny (?)
+ACP_MAIN: Strona Główna
+ACP_PLAINPASSWORD: Hasło
+ACP_ROLES: Uprawnienia
+ACP_USER_ROLE: Użytkownik
+ACP_ADMIN_ROLE: Administrator
+ACP_FULLNAME: Login
+
+
+action.new: Dodaj
+#END ADMIN PANEL
+
+#WORKERS - FORM ADD/EDIT
+LC_FirstName: Imię
+LC_LastName: Nazwisko
+LC_JobTitle: Stanowisko
+LC_DateHired: Data Zatrudnienia
+LC_Hired: Zatrudniony
+LC_IsActive: Aktywny
+LC_Submit: Wyślij
+#WORKERS - FORM ADD/EDIT END
+
+#CARD - FORM ADD/EDIT
+LC_CardId: RFID ID(*)
+LC_AccessLevel: Poziom Dostępu(*)
+LC_Worker: Pracownik
+#CARD - FORM ADD/EDIT END
+
+#EDIT PROFILE FORM
+E-Mail: E-Mail
+
+

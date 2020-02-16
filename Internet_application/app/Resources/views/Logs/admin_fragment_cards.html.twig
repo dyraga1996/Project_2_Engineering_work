@@ -1,0 +1,45 @@
+{% if logAction == "edit" %}
+    <div class="row offset-1">
+        <div class="col-sm-5">
+            <p>ID Karty</p>
+        </div>
+        <div class="col-sm-5">
+            <a href="{{ url('card_details', {"id": oldCard.getId}) }}">{{ oldObject.getCardId }}</a>
+        </div>
+        <div class="col-sm-5">
+            <p>Poziom Dostępu</p>
+        </div>
+        <div class="col-sm-5">
+            {{ oldObject.accessLevel }}
+        </div>
+        {% if oldWorker is not same as(null) %}
+            <div class="col-sm-5">
+                <p>Pracownik</p>
+            </div>
+            <div class="col-sm-5">
+                <a href="{{ url('worker_details', {"id": oldWorker.id}) }}"> {{ oldWorker.firstName }} {{ oldWorker.lastName }}</a>
+            </div>
+        {% endif %}
+    </div>
+{% else %}
+    <div class="row offset-1">
+        <div class="col-sm-5">
+            <p>ID Karty</p>
+        </div>
+        <div class="col-sm-5">
+            <a href="{{ url('card_details', {"id": newObject.getId}) }}">{{ newObject.getCardId }}</a>
+        </div>
+        <div class="col-sm-5">
+            <p>Poziom Dostępu</p>
+        </div>
+        <div class="col-sm-5">
+            {{ newObject.accessLevel }}
+        </div>
+        <div class="col-sm-5">
+            <p>Pracownik</p>
+        </div>
+        <div class="col-sm-5">
+            <a href="{{ url('worker_details', {"id": newObject.getWorker.getId}) }}"> {{ newObject.worker.firstName }} {{ newObject.worker.lastName }}</a>
+        </div>
+    </div>
+{% endif %}

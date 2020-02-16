@@ -1,0 +1,22 @@
+<div class="row offset-1">
+    <div class="col-sm-5">
+        <p>ID Karty</p>
+    </div>
+    <div class="col-sm-5">
+        <a href="{{ url('card_details', {"id": newCard.getId}) }}">{{ newObject.getCardId }}</a>
+    </div>
+    <div class="col-sm-5">
+        <p>Poziom Dostępu</p>
+    </div>
+    <div class="col-sm-5">
+        {{ newObject.accessLevel }}
+    </div>
+    {% if oldWorker is not same as(null) %}
+        <div class="col-sm-5">
+            <p>Pracownik</p>
+        </div>
+        <div class="col-sm-5">
+            <a href="{{ url('worker_details', {"id": newWorker.id}) }}"> {{ newWorker.firstName }} {{ newWorker.lastName }}</a>
+        </div>
+    {% endif %}
+</div>

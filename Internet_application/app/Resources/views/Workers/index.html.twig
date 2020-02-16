@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-users"></i> Lista pracowników</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Imię i nazwisko</th>
+                    <th scope="col">Stanowisko</th>
+                    <th scope="col">Data Zatrudnienia</th>
+                    <th scope="col">Zatrudniony</th>
+                    <th>Akcje [ <a href="{{ url('worker_add') }}"> <i class="fas fa-plus"></i></a> ]</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for worker in pagination %}
+                    <tr>
+                        <th scope="row">{{ worker.id }}</th>
+                        <td>{{ worker.firstName }} {{ worker.lastName }}</td>
+                        <td>{{ worker.jobTitle }}</td>
+                        <td>{{ worker.hiredAt|date("Y-m-d") }}</td>
+                        <td>{{ worker.hired }}</td>
+                        <td>
+                            <a href="{{ url('worker_details', {"id":worker.id}) }}"><i class="fas fa-search"></i></a> &nbsp
+                            <a href="{{ url('worker_remove', {"id":worker.id}) }}"> <i class="fas fa-user-minus"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <a href="{{ url('rfid_index') }}">
+                    <button type="button" class="btn btn-outline-dark">
+                        <i class="fas fa-home"></i> Powrót
+                    </button>
+                </a>
+
+                <div class="navigation offset-3">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

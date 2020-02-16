@@ -1,0 +1,110 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-align-justify"></i> Wyświetl log</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        {% if logAction == "add" %}
+                            <h5 class="card-header"><i class="far fa-file"></i> Nowy objekt</h5>
+                        {% else %}
+                            <h5 class="card-header"><i class="far fa-file"></i> Przed edycją</h5>
+                        {% endif %}
+                        <div class="card-body">
+                            {% if place == "cards" %}
+                                {% include "Logs/admin_fragment_cards.html.twig" %}
+                            {% elseif place == "workers" %}
+                                {% include"Logs/admin_fragment_workers.html.twig" %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% if oldObject is not same as(null) %}
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <h5 class="card-header"><i class="fas fa-file"></i> Po edycji</h5>
+                            <div class="card-body">
+                                {% if place == "cards" %}
+                                    {% include "Logs/admin_fragment_old_cards.html.twig" %}
+                                {% elseif place == "workers" %}
+                                    {% include "Logs/admin_fragment_old_workers.html.twig" %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+
+                {% endif %}
+
+            </div>
+
+            <br/>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header"><i class="fas fa-user"></i> Użytkownik</h5>
+                        <div class="card-body">
+                            <div class="row offset-1">
+                                <div class="col-sm-5">
+                                    <p>Login</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ user.usernameCanonical | capitalize }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Adres E-mail</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ user.emailCanonical }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Rola:</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {% if user.roles[0] == "ROLE_ADMIN" %}
+                                        <p>Administrator</p>
+                                    {% else %}
+                                        <p>Użytkownik</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header"><i class="far fa-calendar-alt"></i> Data</h5>
+                        <div class="card-body">
+                            <div class="row offset-1">
+                                <div class="col-sm-5">
+                                    <p>Data</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ log.createdAt | date("Y-m-d H:i:s") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ url('logs_admin_index') }}">
+                <button type="button" class="btn btn-outline-dark">
+                    <i class="fas fa-arrow-circle-left"></i> Powrót
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

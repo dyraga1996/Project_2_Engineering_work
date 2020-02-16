@@ -1,0 +1,42 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9  offset-md-2  toppad" >
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ user.username }}</h2>
+                        <table class="table table-user-information ">
+                            <tbody>
+                            <tr>
+                                <td>Adres E-Mail:</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Data ostatniego logowania:</td>
+                                <td>{{ user.lastlogin|date('Y-m-d H:i:s') }}</td>
+                            </tr>
+                            <tr>
+                                <td>Poziom uprawnień:</td>
+                                {% if user.roles[0] == 'ROLE_ADMIN' %}
+                                <td>Administrator</td>
+                                {% endif %}
+                                {% if user.roles[0] == 'ROLE_USER' %}
+                                    <td>Użytkownik</td>
+                                {% endif %}
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="float-left">
+                            <a href="{{ url('fos_user_profile_edit') }}" class="btn btn-primary ml-2">Edytuj dane</a>
+                        </div>
+                        <div class="float-right">
+                            <a href="{{ url('fos_user_change_password') }}" class="btn btn-primary ml-2">Zmień Hasło</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

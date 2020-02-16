@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card">
+    <div class="card-header">Wyświetl logowanie karty</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-id-card-alt"></i> Karta</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row offset-1">
+                            <div class="col-sm-5">
+                                <p>ID Karty</p>
+                            </div>
+                            <div class="col-sm-5">
+                                {{ card.cardId }}
+                            </div>
+                            <div class="col-sm-5">
+                                Poziom dostępu
+                            </div>
+                            <div class="col-sm-5">
+                                {{ card.accessLevel }}
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                {% if card.worker.hired == 0 %}
+                <div class="card bg-danger">
+                    {% else %}
+                    <div class="card">
+                        {% endif %}
+                        <h5 class="card-header"><i class="fas fa-id-card"></i> Użytkownik</h5>
+                        <div class="card-body">
+                            <div class="row offset-1">
+                                <div class="col-sm-5">
+                                    <p>Imię i Nazwisko</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ card.worker.firstName }} {{ card.worker.lastName }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Stanowisko</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ card.worker.jobTitle }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Zatrudniony</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ card.worker.hiredAt | date("Y-m-d H:i:s") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <h5 class="card-header"><i class="fas fa-calendar-alt"></i> Data</h5>
+                        <div class="card-body">
+                            <div class="row offset-1">
+                                <div class="col-sm-5">
+                                    <p>Czas dostępu(realny)</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ card_log.orginalDatetime | date("Y-m-d H:i:s") }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Czas synchronizacji</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {{ card_log.createdAt | date("Y-m-d H:i:s") }}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Akcja</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {% if card_log.action == "authorize" %}
+                                        <p>Próba autoryzacji</p>
+                                    {% else %}
+                                        <p>Próba autoryzacji</p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>Dostęp</p>
+                                </div>
+                                <div class="col-sm-5">
+                                    {% if card_log.result == 1 %}
+                                        <p>Dostęp przyznany</p>
+                                    {% else %}
+                                        <p>Dostęp nie przyznany</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ url('logs_cards_index') }}">
+                <button type="button" class="btn btn-outline-dark">
+                    <i class="fas fa-arrow-circle-left"></i> Powrót
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    {% block fos_user_content %}
+        <div class="card bg-info col-6 border-danger offset-3" align="center">
+            <h5 class="card-header">Rejestracja zakończyła się pomyślnie !</h5>
+            <div class="card-body">
+                <h5 class="card-title">Witaj, {{ user.username }}</h5>
+                <p class="card-text">Możesz śmiało przejść do przeglądania terminarza.</p>
+                <a href="{{ url('schedule_index') }}" class="btn btn-outline-light">Strona główna</a>
+            </div>
+        </div>
+    {% endblock fos_user_content %}
+{% endblock %}

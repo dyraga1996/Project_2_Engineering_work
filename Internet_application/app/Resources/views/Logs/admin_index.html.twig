@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-align-justify"></i> Lista logów administracyjnych</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover" >
+                <thead>
+                <tr align="center">
+                    <th scope="col">#</th>
+                    <th scope="col">Użytkownik</th>
+                    <th scope="col">Czynność</th>
+                    <th scope="col">Miejsce</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for adminLog in pagination %}
+                    <tr align="center">
+                        <td>{{ adminLog.id }}</td>
+                        <td>{{ usernames[loop.index0] }}</td>
+                        <td>{{ adminLog.action }}</td>
+                        <td>{{ adminLog.controller }}</td>
+                        <td>{{ adminLog.createdAt | date("Y-m-d H:i:s") }}</td>
+                        <td><a href="{{ url('logs_admin_details', {'id':adminLog.id}) }}"><i class="fas fa-search"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <a href="{{ url('rfid_index') }}">
+                    <button type="button" class="btn btn-outline-dark">
+                        <i class="fas fa-home"></i> Powrót
+                    </button>
+                </a>
+
+                <div class="navigation offset-3">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

@@ -1,0 +1,95 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+rfid_index:
+    path:     /
+    controller: AppBundle:Rfid:index
+
+worker_index:
+    path:     /workers/{page}
+    defaults: {page: 1}
+    controller: AppBundle:Worker:index
+
+worker_add:
+    path:     /workers/add/
+    controller: AppBundle:Worker:add
+
+worker_details:
+    path:     /worker/{id}
+    controller: AppBundle:Worker:details
+
+worker_remove:
+    path:     /worker/remove/{id}
+    controller: AppBundle:Worker:remove
+
+worker_edit:
+    path:     /worker/edit/{id}
+    controller: AppBundle:Worker:edit
+
+rfid_testConnection:
+    path:     /test_connection/
+    controller: AppBundle:Rfid:testConnection
+
+rfid_access:
+    path:     /access/{id}
+    controller: AppBundle:Rfid:access
+
+cards_index:
+    path:       /cards/{page}
+    defaults: {page: 1}
+    controller: AppBundle:Card:index
+
+card_add:
+    path:     /card/add
+    controller: AppBundle:Card:addCard
+
+card_details:
+    path:     /card/{id}
+    controller: AppBundle:Card:details
+
+card_edit:
+    path:     /card/edit/{id}
+    controller: AppBundle:Card:edit
+
+card_remove:
+    path:     /card/remove/{id}
+    controller: AppBundle:Card:remove
+
+rfid_temp_add:
+    path:      /rfid/temp/{id}
+    controller: AppBundle:Rfid:temporaryCardAdd
+
+rfid_temp_get:
+    path:       /rfid/temporary/get
+    controller: AppBundle:Rfid:returnTemporaryCard
+
+logs_admin_index:
+    path:       /logs/admin/{page}
+    defaults: {page: 1}
+    controller: AppBundle:Logs:adminIndex
+
+logs_admin_details:
+    path:       /logs/admin/detail/{id}
+    controller: AppBundle:Logs:adminDetails
+
+logs_cards_index:
+    path:       /logs/card/{page}
+    defaults: {page: 1}
+    controller: AppBundle:Logs:cardIndex
+
+logs_card_details:
+    path:       /logs/card/detail/{id}
+    controller: AppBundle:Logs:cardDetails
+
+logs_synchronize:
+    path:       /logs/synchronize/{datetime}/{id}/{action}
+    controller: AppBundle:Logs:synchronize
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin

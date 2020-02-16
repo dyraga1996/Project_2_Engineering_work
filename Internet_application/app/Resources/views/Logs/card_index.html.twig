@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-align-justify"></i> Lista logowań kart</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover" >
+                <thead>
+                <tr align="center">
+                    <th scope="col">#</th>
+                    <th scope="col">Poziom bramki</th>
+                    <th scope="col">ID Karty</th>
+                    <th scope="col">Czynność</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Akcje</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cardlog in pagination %}
+                    {% if cardlog.result == 1 %}
+                        <tr align="center">
+                    {% else %}
+                        <tr class="table-danger" align="center">
+                    {% endif %}
+                    <td>{{ cardlog.id }}</td>
+                    <td>{{ cardlog.gateLevel }}</td>
+                    <td>{{ cardlog.cardId }}</td>
+                    <td>{{ cardlog.action }}</td>
+                    <td>{{ cardlog.orginalDatetime|date("Y-m-d H:i:s") }}</td>
+                    <td><a href="{{ url('logs_card_details', {'id':cardlog.id}) }}"><i class="fas fa-search"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <a href="{{ url('rfid_index') }}">
+                    <button type="button" class="btn btn-outline-dark">
+                        <i class="fas fa-home"></i> Powrót
+                    </button>
+                </a>
+
+                <div class="navigation offset-3">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}

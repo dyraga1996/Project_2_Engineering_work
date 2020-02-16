@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-id-card-alt"></i> ({{ card.id }}) - {{ card.cardId }}</h5>
+        </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.cardId) }}</label>
+                <div class="col-sm-6">
+                    {{ form_widget(form.cardId) }}
+                    <small>Tutaj pojawi się ID dodawanej karty</small>
+                </div>
+            </div>
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.accessLevel) }}</label>
+                <div class="col-sm-6">
+                    {{ form_widget(form.accessLevel) }}
+                    <small>Poziom dostępu</small>
+                </div>
+            </div>
+            <div class="form-group row offset-2">
+                <label for="choiceType" class="col-sm-2 col-form-label">{{ form_label(form.worker) }}</label>
+                <div class="col-sm-6">
+                    {{ form_widget(form.worker) }}
+                    <small>Pracownik</small>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="form-group row offset-5">
+                <div class="col-sm-2">
+                    <a href="{{ url('card_details', {"id": card.id}) }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-circle-left"></i> Powrót
+                    </a>
+                </div>
+                <div class="col-sm-2">
+                    {{ form_widget(form.submit, {"attr": {"class": "btn-outline-primary"}}) }}
+                </div>
+            </div>
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock %}
